@@ -7,7 +7,7 @@
   makeWrapper,
   nixosTests,
   writeText,
-  graalvmPackages,
+  graalvmCEPackages,
 }:
 let
   version = "5.6.1";
@@ -52,7 +52,7 @@ maven.buildMavenPackage {
 
   pname = "commafeed";
 
-  mvnJdk = graalvmPackages.graalvm-ce;
+  mvnJdk = graalvmCEPackages.graalvm-ce;
   mvnHash = "sha256-+9nyg2zrXkrDJuqVxUx2QRXiUDl8/Jna0FKhHpuJwqU=";
 
   mvnParameters = lib.escapeShellArgs [
@@ -65,7 +65,7 @@ maven.buildMavenPackage {
     "-Dmaven.gitcommitid.skip"
   ];
 
-  nativeBuildInputs = [ graalvmPackages.graalvm-ce makeWrapper ];
+  nativeBuildInputs = [ graalvmCEPackages.graalvm-ce makeWrapper ];
 
   configurePhase = ''
     runHook preConfigure
