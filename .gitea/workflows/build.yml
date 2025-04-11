@@ -44,12 +44,11 @@ jobs:
             "require-sigs = false"
 
             # Nix installer flags
-            installer_options=(
-              --no-daemon
-              --no-channel-add
-              --nix-extra-conf-file /etc/nix/nix.conf
-              --no-modify-profile
-            )
+          install_options: |
+            --no-daemon
+            --no-channel-add
+            --nix-extra-conf-file /etc/nix/nix.conf
+            --no-modify-profile
       - name: Show nixpkgs version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
       - name: Check evaluation
