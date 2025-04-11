@@ -23,7 +23,6 @@ jobs:
     steps:
       - name: Setup known hosts
         run: |
-          set -ex
           mkdir -p ~/.ssh/
           ssh-keyscan cache.home > ~/.ssh/known_hosts
     

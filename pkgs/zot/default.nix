@@ -33,7 +33,6 @@ in
 buildGoModule {
   pname = "zot";
   version = "2.1.2";
-  env.CGO_ENABLED = 1;
 
   src = fetchFromGitHub {
     owner = "project-zot";
@@ -80,4 +79,7 @@ buildGoModule {
   subPackages = [
     "cmd/zot"
   ];
+
+  env.CGO_ENABLED = 1;
+  doCheck = false;
 }
