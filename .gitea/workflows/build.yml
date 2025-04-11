@@ -37,7 +37,19 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             trusted-public-keys = ncps.home:6qNYS6mjcO2Ef2VcmIEC7rX4ZMP91PL74oP2cO9JJcU=
             substituters = https://ncps.home
-            sandbox = true
+            add_config "max-jobs = auto"
+            # Allow binary caches for user
+            "trusted-users = root $USER"
+            "sandbox = false"
+            "require-sigs = false"
+
+            # Nix installer flags
+            installer_options=(
+              --no-daemon
+              --no-channel-add
+              --nix-extra-conf-file /etc/nix/nix.conf
+              --no-modify-profile
+            )
       - name: Show nixpkgs version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
       - name: Check evaluation
