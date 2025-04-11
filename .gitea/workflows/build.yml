@@ -51,8 +51,7 @@ jobs:
             -I $PWD
       - name: Build nix packages
         run: |
-          set -ex
-          ls -la ~/.ssh
+          export HOME=$(pwd)
           nix shell -f '<nixpkgs>' \
             nix-build-uncached \
             -c nix-build \
