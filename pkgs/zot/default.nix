@@ -18,7 +18,7 @@ let
     };
 
     npmDepsHash = "sha256-5f9D+DmX4I14wx5mNScero1xWQRtuLwhfDXfHM0mbB4=";
-    makeCacheWritable = true;
+    #makeCacheWritable = true;
     npmFlags = [ "--legacy-peer-deps" ];
 
     installPhase = ''
